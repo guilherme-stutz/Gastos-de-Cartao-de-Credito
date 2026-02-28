@@ -7,7 +7,7 @@ Esse projeto foi desenvolvido com o objetivo de praticar:
 - Estruturas condicionais
 - Organização de código com funções
 
-Entre as funconalidades estão:
+Entre as funcionalidades estão:
 - Adicionar gasto
 - Listar todos os gastos
 - Calcular total da fatura
