@@ -4,24 +4,24 @@ import os
 arquivo='gastos.csv'
 def inicializar_arquivo():
     if not os.path.exists(arquivo):
-        with open(arquivo,'w',newline='',encoding='utf-8') as f:
-            writer=csv.writer(f)
+        with open(arquivo,'w',newline='',encoding='utf-8-sig') as f:
+            writer=csv.writer(f, delimiter = ';')
             writer.writerow(['Descrição','Valor'])
 
 def adicionar_gasto():
     descricao=input('Descrição da compra: ')
     valor=float(input('Valor da compra: '))
 
-    with open(arquivo,'a',newline='',encoding='utf-8') as f:
-        writer=csv.writer(f)
+    with open(arquivo,'a',newline='',encoding='utf-8-sig') as f:
+        writer=csv.writer(f, delimiter = ';')
         writer.writerow([descricao,valor])
 
     print('Gasto salvo com sucesso!✅')
 
 def ver_gastos():
     print('\n--- Gastos da Fatura ---')
-    with open(arquivo,'r',encoding='utf-8') as f:
-        reader=csv.reader(f)
+    with open(arquivo,'r',encoding='utf-8-sig') as f:
+        reader=csv.reader(f, delimiter = ';')
         next(reader)
         vazio= True
         for descricao,valor in reader:
@@ -32,8 +32,8 @@ def ver_gastos():
     print()
 def total_fatura():
     total=0
-    with open(arquivo,'r',encoding='utf-8')as  f:
-        reader=csv.reader(f)
+    with open(arquivo,'r',encoding='utf-8-sig')as  f:
+        reader=csv.reader(f, delimiter = ';')
         next(reader)
 
         for _, valor in reader:
@@ -42,8 +42,8 @@ def total_fatura():
 
 def excluir_gastos():
     gastos=[]
-    with open(arquivo,'r',encoding='utf-8') as f:
-        reader=csv.reader(f)
+    with open(arquivo,'r',encoding='utf-8-sig') as f:
+        reader=csv.reader(f, delimiter = ';')
         cabecalho=next(reader)
 
         for linha in reader:
@@ -63,11 +63,11 @@ def excluir_gastos():
         print('Número inválido!')
         return
     gasto_removido=gastos.pop(opcao - 1)
-    with open(arquivo,'w',newline='',encoding='utf-8')as f:
-        writer=csv.writer(f)
+    with open(arquivo,'w',newline='',encoding='utf-8-sig')as f:
+        writer=csv.writer(f, delimiter = ';')
         writer.writerow(cabecalho)
         writer.writerows(gastos)
-    print("🗑 Gasto '{gasto_removido[0]}' removido!")
+    print(f"🗑 Gasto '{gasto_removido[0]}' removido!")
 
 
 
@@ -102,3 +102,4 @@ while True:
     else:
         print('❌\033[4Opção inválida!\033[m❌')
         input('Pressione ENTER para tentar novamente...')
+
