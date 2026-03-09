@@ -1,4 +1,4 @@
-Sistema simples em Python para gerenciamento de gastos utilizando arquivo CSV como base de dados.
+Sistema em Python para gerenciamento de gastos utilizando arquivo CSV como base de dados.
 
 Esse projeto foi desenvolvido com o objetivo de praticar:
 - Manipulação de arquivos
